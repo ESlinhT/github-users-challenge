@@ -15,7 +15,6 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Search />}/>
                     <Route path="/users/:id" element={<User />}/>
-                    <Route path="/users/:id/does-not-work" element={<DoesNotWork />}/>
                 </Routes>
             </div>
         </BrowserRouter>

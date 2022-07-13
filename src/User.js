@@ -27,6 +27,8 @@ export default function User() {
     const [info, setInfo] = useState([]);
     const [repos, setRepos] = useState([]);
     const [stars, setStars] = useState([]);
+    const [repoText, setRepoText] = useState("");
+    const [starText, setStarText] = useState("");
 
     useEffect(() => {
         const url = "https://api.github.com/users/";
@@ -52,9 +54,6 @@ export default function User() {
                 <div className="mt-5">
                     <img src={info.avatar_url} alt="" className="rounded-circle" height="300" width="300"/>
                     <h4 className="text-white text-center mt-4">{info.login}</h4>
-                    {/*<Link to={`/users/${info.login}/does-not-work`}>*/}
-                    {/*    <button className="btn w-25 bg-dark text-white border-white">Follow</button>*/}
-                    {/*</Link>*/}
                 </div>
                 <div className="d-flex flex-column ms-5">
                     <Tabs defaultActiveKey="overview"
@@ -75,18 +74,57 @@ export default function User() {
                             </div>
                         </Tab>
                         <Tab eventKey="repositories" title="Repositories">
-                            {info.public_repos > 0
-                                ? <ul> {repos.map((repo) => {
-                                    return <li key={repo.id} className="list-unstyled text-center">{repo.name}</li>
-                                })} </ul>
-                                : <h6 className="text-center my-5"> {info.login + ' does not have any public repos.'}</h6>}
+                            {repos
+                                ? <>
+                                    <input
+                                        className="searchInput w-100 mb-5"
+                                        placeholder="Search repos..."
+                                        type="text"
+                                        onChange={(e) => {
+                                            setRepoText(e.target.value);
+                                        }}
+                                    />
+                                    <ul>
+                                        {repos.filter((val) => {
+                                            if (repoText === "") {
+                                                return val;
+                                            } else if (val.name.toLowerCase().includes(repoText.toLowerCase())) {
+                                                return val;
+                                            }
+                                        })
+                                            .map((repo) => {
+                                                return <li key={repo.id} className="list-unstyled text-center">{repo.name}</li>
+                                            })}
+                                    </ul>
+                                </>
+                                :
+                                <h6 className="text-center my-5"> {info.login + ' does not have any public repos.'}</h6>}
                         </Tab>
                         <Tab eventKey="stars" title="Stars">
-                            {info.starred_url
-                                ? <ul> {stars.map((star) => {
-                                    return <li key={star.id} className="list-unstyled text-center">{star.name}</li>
-                                })} </ul>
-                                : <h6 className="text-center my-5"> {info.login + ' does not have any starred repos.'}</h6>}
+                            {stars
+                                ? <>
+                                    <input
+                                        className="searchInput w-100 mb-5"
+                                        placeholder="Search starred repos..."
+                                        type="text"
+                                        onChange={(e) => {
+                                            setStarText(e.target.value);
+                                        }}
+                                    />
+                                    <ul>
+                                        {stars.filter((val) => {
+                                            if (starText === "") {
+                                                return val;
+                                            } else if (val.name.toLowerCase().includes(starText.toLowerCase())) {
+                                                return val;
+                                            }
+                                        }).map((star) => {
+                                            return <li key={star.id} className="list-unstyled text-center">{star.name}</li>
+                                        })}
+                                    </ul>
+                                </>
+                                :
+                                <h6 className="text-center my-5"> {info.login + ' does not have any starred repos.'}</h6>}
                         </Tab>
                     </Tabs>
                 </div>
