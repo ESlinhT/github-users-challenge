@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import Search from "./Search";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
+import {BrowserRouter, Routes, Route,} from "react-router-dom";
+import User from "./User";
+import Header from "./Header";
+import DoesNotWork from "./DoesNotWork";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="container py-2 px-5">
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Search />}/>
+                    <Route path="/users/:id" element={<User />}/>
+                    <Route path="/users/:id/does-not-work" element={<DoesNotWork />}/>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    )
 }
 
 export default App;
