@@ -52,9 +52,9 @@ export default function User() {
                 <div className="mt-5">
                     <img src={info.avatar_url} alt="" className="rounded-circle" height="300" width="300"/>
                     <h4 className="text-white">{info.login}</h4>
-                    <Link to={`/users/${info.login}/does-not-work`}>
-                        <button className="btn w-25 bg-dark text-white border-white">Follow</button>
-                    </Link>
+                    {/*<Link to={`/users/${info.login}/does-not-work`}>*/}
+                    {/*    <button className="btn w-25 bg-dark text-white border-white">Follow</button>*/}
+                    {/*</Link>*/}
                 </div>
                 <div className="d-flex flex-column ms-5">
                     <Tabs defaultActiveKey="overview"
