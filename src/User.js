@@ -35,7 +35,6 @@ export default function User() {
         });
         if (info.starred_url) {
             axios.get(`https://api.github.com/users/${info.login}/starred`).then((res) => {
-                console.log(res.data)
                 setStars(res.data);
             });
         }
