@@ -84,7 +84,7 @@ export default function User() {
                                             setRepoText(e.target.value);
                                         }}
                                     />
-                                    <ul>
+                                    <ul className="ps-5 ms-4">
                                         {repos.filter((val) => {
                                             if (repoText === "") {
                                                 return val;
@@ -93,7 +93,7 @@ export default function User() {
                                             }
                                         })
                                             .map((repo) => {
-                                                return <li key={repo.id} className="list-unstyled text-center">{repo.name}</li>
+                                                return <li key={repo.id} className="ps-3 text-capitalize"><h5 className="text-info">{repo.name}</h5></li>
                                             })}
                                     </ul>
                                 </>
@@ -111,7 +111,7 @@ export default function User() {
                                             setStarText(e.target.value);
                                         }}
                                     />
-                                    <ul>
+                                    <ul className="ps-5 ms-4">
                                         {stars.filter((val) => {
                                             if (starText === "") {
                                                 return val;
@@ -119,7 +119,7 @@ export default function User() {
                                                 return val;
                                             }
                                         }).map((star) => {
-                                            return <li key={star.id} className="list-unstyled text-center">{star.name}</li>
+                                            return <li key={star.id} className="ps-3 text-capitalize"><h5 className="text-info">{star.name}</h5></li>
                                         })}
                                     </ul>
                                 </>
