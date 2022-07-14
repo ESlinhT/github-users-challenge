@@ -59,7 +59,7 @@ export default function User() {
                     <Tabs defaultActiveKey="overview"
                         transition={false}
                         id="myTabContent"
-                        className="mb-3" style={{width: '40em'}}>
+                        className="mb-3" style={{width: '50em'}}>
                         <Tab eventKey="overview" title="Overview">
                             <div>
                                 <h4>Repositories</h4>
@@ -84,7 +84,7 @@ export default function User() {
                                             setRepoText(e.target.value);
                                         }}
                                     />
-                                    <ul className="ps-5 ms-4">
+                                    <ul className="ps-2 ms-4" style={{columns: "3"}}>
                                         {repos.filter((val) => {
                                             if (repoText === "") {
                                                 return val;
@@ -111,7 +111,7 @@ export default function User() {
                                             setStarText(e.target.value);
                                         }}
                                     />
-                                    <ul className="ps-5 ms-4">
+                                    <ul className="ps-2 ms-4" style={{columns: "3"}}>
                                         {stars.filter((val) => {
                                             if (starText === "") {
                                                 return val;
