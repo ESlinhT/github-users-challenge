@@ -59,7 +59,7 @@ export default function User() {
                     <Tabs defaultActiveKey="overview"
                         transition={false}
                         id="myTabContent"
-                        className="mb-3" style={{width: '50em'}}>
+                        className="mb-3" style={{maxWidth: '50em', width: '50em'}}>
                         <Tab eventKey="overview" title="Overview">
                             <div>
                                 <h4>Repositories</h4>
@@ -84,7 +84,7 @@ export default function User() {
                                             setRepoText(e.target.value);
                                         }}
                                     />
-                                    <ul className="ps-2 ms-4" style={{columns: "3"}}>
+                                    <ul className="ps-2 ms-4" style={{columns: "2", maxWidth: '45em'}}>
                                         {repos.filter((val) => {
                                             if (repoText === "") {
                                                 return val;
@@ -93,7 +93,7 @@ export default function User() {
                                             }
                                         })
                                             .map((repo) => {
-                                                return <li key={repo.id} className="ps-3 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${repo.name}`} className="text-decoration-none">{repo.name}</Link></h5></li>
+                                                return <li key={repo.id} className="ps-2 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${repo.name}`} className="text-decoration-none">{repo.name}</Link></h5></li>
                                             })}
                                     </ul>
                                 </>
@@ -111,7 +111,7 @@ export default function User() {
                                             setStarText(e.target.value);
                                         }}
                                     />
-                                    <ul className="ps-2 ms-4" style={{columns: "3"}}>
+                                    <ul className="ps-2 ms-4" style={{columns: "2", maxWidth: '45em'}}>
                                         {stars.filter((val) => {
                                             if (starText === "") {
                                                 return val;
@@ -119,7 +119,7 @@ export default function User() {
                                                 return val;
                                             }
                                         }).map((star) => {
-                                            return <li key={star.id} className="ps-3 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${star.name}`} className="text-decoration-none">{star.name}</Link></h5></li>
+                                            return <li key={star.id} className="ps-2 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${star.name}`} className="text-decoration-none">{star.name}</Link></h5></li>
                                         })}
                                     </ul>
                                 </>
