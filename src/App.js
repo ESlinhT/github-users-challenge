@@ -5,7 +5,7 @@ import './App.css';
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
 import User from "./User";
 import Header from "./Header";
-import DoesNotWork from "./DoesNotWork";
+import Repo from "./Repo";
 
 function App() {
     return (
@@ -15,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Search />}/>
                     <Route path="/users/:id" element={<User />}/>
+                    <Route path="/users/:id/repos/:name" element={<Repo />}/>
                 </Routes>
             </div>
         </BrowserRouter>

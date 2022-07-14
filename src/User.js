@@ -93,7 +93,7 @@ export default function User() {
                                             }
                                         })
                                             .map((repo) => {
-                                                return <li key={repo.id} className="ps-3 text-capitalize"><h5 className="text-info">{repo.name}</h5></li>
+                                                return <li key={repo.id} className="ps-3 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${repo.name}`} className="text-decoration-none">{repo.name}</Link></h5></li>
                                             })}
                                     </ul>
                                 </>
@@ -119,7 +119,7 @@ export default function User() {
                                                 return val;
                                             }
                                         }).map((star) => {
-                                            return <li key={star.id} className="ps-3 text-capitalize"><h5 className="text-info">{star.name}</h5></li>
+                                            return <li key={star.id} className="ps-3 text-capitalize"><h5 className="text-info"><Link to={`/users/${info.login}/repos/${star.name}`} className="text-decoration-none">{star.name}</Link></h5></li>
                                         })}
                                     </ul>
                                 </>
