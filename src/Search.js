@@ -10,6 +10,7 @@ export default function Search() {
     let [currentPage, setCurrentPage] = useState(defaultPage)
     const [totalCount, setTotalCount] = useState(0)
     const [lastPage, setLastPage] = useState(0)
+    const [search, setSearch] = useState(false)
 
     function parseLinkHeader(link) {
         const linksArray = link.split(", ").map(header => header.split("; "));
@@ -40,11 +41,13 @@ export default function Search() {
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
             setUriParam(name);
+            setSearch(true)
         }
     }
 
     function handleSearch() {
         setUriParam(name);
+        setSearch(true)
     }
 
     function handlePrev() {
@@ -75,11 +78,15 @@ export default function Search() {
                         <li><h4>{item.login}</h4></li>
                     </Link>
                 })} </ul>
+                {!info.length && search ? <h6 className="text-center my-3"> There are no users with that name. </h6> : ''}
             </div>
             <div className="d-flex">
-                {currentPage > 1 ? <button className="btn btn-outline-info me-3" onClick={handlePrev}>Prev</button> : ''}
-                {totalCount > 30 && currentPage < lastPage ? <button className="btn btn-outline-info me-3" onClick={handleNext}>Next</button> : ''}
-                {totalCount > 30 && currentPage !== lastPage ? <button className="btn btn-outline-info" onClick={handleLast}>Last</button> : ''}
+                {currentPage > 1 ?
+                    <button className="btn btn-outline-info me-3" onClick={handlePrev}>Prev</button> : ''}
+                {totalCount > 30 && currentPage < lastPage ?
+                    <button className="btn btn-outline-info me-3" onClick={handleNext}>Next</button> : ''}
+                {totalCount > 30 && currentPage !== lastPage ?
+                    <button className="btn btn-outline-info" onClick={handleLast}>Last</button> : ''}
             </div>
         </div>
     )
