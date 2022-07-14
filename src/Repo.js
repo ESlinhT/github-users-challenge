@@ -11,6 +11,7 @@ export default function Repo() {
         const url = "https://api.github.com/repos/";
         axios.get(url + params.id + '/' + params.name).then((res) => {
             setInfo(res.data);
+            console.log(res)
         });
     }, []);
 

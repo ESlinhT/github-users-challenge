@@ -74,7 +74,7 @@ export default function User() {
                             </div>
                         </Tab>
                         <Tab eventKey="repositories" title="Repositories">
-                            {repos
+                            {repos.length
                                 ? <>
                                     <input
                                         className="searchInput w-100 mb-5"
@@ -101,7 +101,7 @@ export default function User() {
                                 <h6 className="text-center my-5"> {info.login + ' does not have any public repos.'}</h6>}
                         </Tab>
                         <Tab eventKey="stars" title="Stars">
-                            {stars
+                            {stars.length
                                 ? <>
                                     <input
                                         className="searchInput w-100 mb-5"
